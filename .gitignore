@@ -1,0 +1,5 @@
+/bin/
+
+HttpRequestClient/.idea/*
+HttpRequestClient/HttpRequestClient.iml
+HttpRequestClient/target/*
