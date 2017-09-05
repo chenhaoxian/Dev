@@ -5,7 +5,8 @@ package oocl.ir4.shp.request.enums;
  */
 public enum RequestType {
 	SUPP_TOOL_GET_REQUEST("SuppToolGet"),
-	SUPP_TOOL_UPDATE_REQUEST("SuppToolUpdate");
+	SUPP_TOOL_UPDATE_REQUEST("SuppToolUpdate"),
+	CHECK_VERSION("checkVersion");
 
 	private String value;
 
