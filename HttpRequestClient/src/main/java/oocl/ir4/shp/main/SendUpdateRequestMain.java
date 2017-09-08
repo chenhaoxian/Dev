@@ -43,6 +43,7 @@ public class SendUpdateRequestMain extends CommonService{
 			SuppToolUpdateProcessor suppToolUpdateProcessor = (SuppToolUpdateProcessor) processors.createRequestProcessors();
 			suppToolUpdateProcessor.setSynDataList(synDataList);
 			suppToolUpdateProcessor.setThreadId(i);
+			suppToolUpdateProcessor.setConfiguration(configuration);
 			exe.execute(suppToolUpdateProcessor);
 		}
 		exe.shutdown();
