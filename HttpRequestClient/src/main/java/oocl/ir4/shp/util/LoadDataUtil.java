@@ -24,4 +24,19 @@ public class LoadDataUtil {
 		System.out.println("\n");
 		return dataList;
 	}
+
+	public static String loadContents(String dataFilePath) throws IOException {
+		StringBuilder sb = new StringBuilder();
+		BufferedReader br = new BufferedReader(new FileReader(dataFilePath));
+		String line;
+		long start = System.currentTimeMillis();
+		System.out.println("Begin to load data from " + dataFilePath);
+		while((line = br.readLine()) != null) {
+			sb.append(line);
+		}
+//		System.out.println("Load data complete. Total " + dataList.size() + " records, cost: " + (System.currentTimeMillis() - start) + "ms");
+		System.out.println("\n");
+		return sb.toString();
+	}
+
 }
