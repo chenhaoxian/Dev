@@ -39,7 +39,7 @@ public class CheckVersionProcessorV1 implements Runnable {
 				while((line = reader.readLine()) != null){
 					document.append(line + " ");
 				}
-				System.out.println(urlStr+"-->"+bizKey+":"+document.toString());
+				System.out.println(urlStr+" ==>"+bizKey+":"+document.toString());
 				reader.close();
 			}else{
 				System.out.println(urlStr+"-->"+bizKey+": FAIL!");

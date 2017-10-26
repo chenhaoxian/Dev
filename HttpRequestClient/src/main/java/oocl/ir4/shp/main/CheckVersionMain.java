@@ -29,7 +29,7 @@ public class CheckVersionMain extends CommonService{
 			CheckVersionHelper checkVersionHelper = new CheckVersionHelper();
 			checkVersionHelper.generateURLs(shpVersionUrls,fileContents);
 			CheckVersionMain main = new CheckVersionMain();
-			main.requestJob();
+			main.execute();
 
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -39,26 +39,12 @@ public class CheckVersionMain extends CommonService{
 	}
 
 	public void requestJob() {
-
-		ExecutorService exe = Executors.newFixedThreadPool(50);
 		for(int i=0; i<shpVersionUrls.size(); i++){
 			RequestProcessors processors = RequestProcessors.fromValue("checkVersion1");
 			CheckVersionProcessorV1 checkVersionProcessorV1 = (CheckVersionProcessorV1) processors.createRequestProcessors();
 			checkVersionProcessorV1.setUrl(shpVersionUrls.get(i).split("#")[0]);
 			checkVersionProcessorV1.setBizKey(shpVersionUrls.get(i).split("#")[1]);
 			exe.execute(checkVersionProcessorV1);
-		}
-		exe.shutdown();
-		while (true) {
-			if (exe.isTerminated()) {
-				System.out.println("End");
-				break;
-			}
-			try {
-				Thread.sleep(200);
-			} catch (InterruptedException e) {
-				e.printStackTrace();
-			}
 		}
 
 	}
