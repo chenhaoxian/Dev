@@ -9,6 +9,7 @@ import oocl.ir4.shp.request.enums.RequestType;
 import oocl.ir4.shp.request.processor.CheckVersionProcessorV1;
 import oocl.ir4.shp.util.LoadDataUtil;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.ExecutorService;
@@ -22,20 +23,20 @@ public class CheckVersionMain extends CommonService{
 	private static List<String> shpVersionUrls ;
 
 	public static void main(String[] arg0){
-
 		try {
-			shpVersionUrls = new ArrayList<String>();
-			String fileContents = LoadDataUtil.loadContents(CheckVersionMain.class.getClassLoader().getResource("data/version.txt").getPath());
-			CheckVersionHelper checkVersionHelper = new CheckVersionHelper();
-			checkVersionHelper.generateURLs(shpVersionUrls,fileContents);
 			CheckVersionMain main = new CheckVersionMain();
 			main.execute();
-
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+	}
 
-
+	@Override
+	protected void preExecute() throws Exception{
+		shpVersionUrls = new ArrayList<String>();
+		String fileContents = LoadDataUtil.loadContents(CheckVersionMain.class.getClassLoader().getResource("data/version.txt").getPath());
+		CheckVersionHelper checkVersionHelper = new CheckVersionHelper();
+		checkVersionHelper.generateURLs(shpVersionUrls,fileContents);
 	}
 
 	public void requestJob() {

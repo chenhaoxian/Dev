@@ -34,7 +34,7 @@ public abstract class CommonService {
 		return LoadDataUtil.loadData(SendUpdateRequestMain.class.getClassLoader().getResource("data/data_list.txt").getPath());
 	}
 
-	protected void preExecute(){}
+	protected void preExecute() throws Exception{}
 
 	protected void afterExecute(){
 	}
